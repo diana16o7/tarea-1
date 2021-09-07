@@ -1,0 +1,110 @@
+import java.util.Scanner;
+
+public class Persona {
+
+    private String nombre;
+    private int edad;
+    private long dni;
+    private char sexo;
+    private double peso;
+    private double altura;
+
+    public Persona() { [color=red]//primer constructor por defecto, con constructor por defecto se refiere a esto? [/color]
+        nombre = "";
+        edad = 0;
+        dni = 0; [color=red]// me pide que todo por defecto menos dni, pero no se que poner en dni, si no pongo algo me da error[/color]
+        sexo = 'H';
+        peso = 0.0;
+        altura = 0.0;
+    }
+
+    public Persona(String nombre, int edad, char sexo) { [color=red]//segundo constructor con nombre, edad y sexo. El resto por defecto. Tampoco se si estoy haciendo un uso correcto del this.[/color]
+        this.nombre = nombre;
+        this.edad = edad;
+        this.sexo = sexo;
+        this.dni = 0;
+        this.sexo = 'H';
+        this.peso = 0.0;
+        this.altura = 0.0;
+    }
+
+    public Persona(String nombre, int edad, long dni, char sexo, double peso, double altura) { [color=red]// Tercer constructor con todos los atributos como parámetros[/color]
+        this.nombre = nombre;
+        this.edad = edad;
+        this.dni = dni;
+        this.sexo = sexo;
+        this.peso = peso;
+        this.altura = altura;
+    }
+
+    public void calcularIMC() {
+        final int DEBAJO_PESO_IDEAL = -1;
+        final int PESO_IDEAL = 0;
+        final int SOBREPESO = 1;
+        double imc;
+
+        imc = peso / altura * altura;
+
+        if (imc < 18.5) {
+            System.out.println(DEBAJO_PESO_IDEAL);
+        } else if (imc >= 18.5 && imc <= 25) {
+            System.out.println(PESO_IDEAL);
+        } else {
+            System.out.println(SOBREPESO);
+        }
+
+    }
+
+    public boolean esMayorDeEdad() {
+        if (edad >= 18) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void comprobarSexo(char sexo) {
+        if (sexo != 'H' || sexo != 'M') {
+            sexo = 'H';
+        }
+    }
+
+    public toString() { [color=red]//todavía no se bien como funciona este método[/color]
+
+    }
+
+    private void generaDNI() { [color=red]//intenté usar (int) en lugar de Math.floor para convertir decimal a entero, pero me generaba siempre la cifra 1 y la letra A, no entiendo el motivo[/color]
+        double numero;
+        int numero2;
+        char letra;
+
+        for (int i = 0; i < 9; i++) {
+            numero = Math.floor(Math.random() * (0 - 9 + 1) + 9);
+            numero2 = (int) numero;
+            System.out.print(numero2);
+        }
+        numero = Math.floor(Math.random() * (65 - 90 + 1) + 90);
+        numero2 = (int) numero;
+        letra = (char) numero2;
+        System.out.println(letra);
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public void setSexo(char sexo) {
+        this.sexo = sexo;
+    }
+
+    public void setPeso(double peso) {
+        this.peso = peso;
+    }
+
+    public void setAltura(double altura) {
+        this.altura = altura;
+    }
